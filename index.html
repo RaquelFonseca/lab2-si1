@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="minhasSeries">
+<head>
+	<title>Minhas Séries</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
+	<script src="lib/angular/angular.min.js"></script>
+	<style>
+		.jumbotron {
+			text-align: center;
+		}
+
+	</style>
+	<script>
+		angular.module("minhasSeries", [])
+		angular.module("minhasSeries").controller("minhasSeriesCtrl", function ($scope) {
+			$scope.app = "Minhas Séries";
+			
+		}); 
+	</script>
+</head>
+<body ng-controller="minhasSeriesCtrl">
+	<div class="jumbotron"> 
+		<h1 ng-bind="app">{{app}}</h1>
+
+		<input class="form-control"type="text" ng-model="serie"name="" placeholder="Nome da série">
+		<button class="btn btn btn-block"ng-click="">Pesquisar</button>
+
+	</div>
+
+</body>
+</html>
