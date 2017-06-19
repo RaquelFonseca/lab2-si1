@@ -1,32 +1,37 @@
 <!DOCTYPE html>
-<html ng-app="minhasSeries">
+<html  lang="pt-br" ng-app="minhasSeries">
 <head>
-	<title>Minhas Séries</title>
+
 	<meta charset="utf-8">
+	<title>Minhas Séries</title>
+
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+
 	<script src="lib/angular/angular.min.js"></script>
-	<style>
-		.jumbotron {
-			text-align: center;
-		}
+	<script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
 
-	</style>
-	<script>
-		angular.module("minhasSeries", [])
-		angular.module("minhasSeries").controller("minhasSeriesCtrl", function ($scope) {
-			$scope.app = "Minhas Séries";
-			
-		}); 
-	</script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers/minhasSeriesCtrl.js"></script>
+	
 </head>
-<body ng-controller="minhasSeriesCtrl">
-	<div class="jumbotron"> 
-		<h1 ng-bind="app">{{app}}</h1>
 
-		<input class="form-control"type="text" ng-model="serie"name="" placeholder="Nome da série">
-		<button class="btn btn btn-block"ng-click="">Pesquisar</button>
+<body ng-controller="minhasSeriesCtrl" >
 
-	</div>
+	  <div class="jumbotron"">
+	  	 <h1>{{app}}</h1>
+		<input class="form-control" type="text" ng-model="nome"" placeholder="Nome da série">
+		<button class="btn btn-default" ng-click="procuraSerie(nome)"  ng-disabled="!nome">Pesquisar</button>
+	 </div>
+
+	 <div class="navegacao">
+	 	<h2>MINHAS SÉRIES</h2>
+     	<h2>MEU WATCHLIST</h2>	
+    </div>
+
+	
+
+		
 
 </body>
 </html>
