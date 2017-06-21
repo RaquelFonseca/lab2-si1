@@ -24,8 +24,16 @@
 		<button class="btn btn-default" ng-click="procuraSerie(nome)"  ng-disabled="!nome">Pesquisar</button>
 	 </div>
 
-	 <div class="navegacao">
+	 <div ng-repeat="serie in seriesPesquisadas" class="col-sm-6 col-md-4">
+	 	<img src="{{serie.Poster}}" alt="...">
+	 	<h4>{{serie.Title}}</h4>
+	 </div>
+
+	 <div class="navegacao1">
 	 	<h2>MINHAS SÉRIES</h2>
+    </div>
+
+     <div class="navegacao2">
      	<h2>MEU WATCHLIST</h2>	
     </div>
 
