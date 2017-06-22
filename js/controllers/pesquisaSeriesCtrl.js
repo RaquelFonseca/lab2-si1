@@ -9,10 +9,11 @@ app.controller("pesquisaSeriesCtrl", function ($scope, $http) {
 		$http.get("http://www.omdbapi.com/?s=" + nome+ "&type=series&apikey=93330d3c").then(successCallback, errorCallback);
 			function successCallback(response){
 				if (response.data.Response === 'False') {
-    	    		alert("Série não encontrada!");
+    	    		alert("A série não foi encontrada!");
 				}
 				else {
 					$scope.seriesPesquisadas = response.data.Search;
+					console.log(response.data.Search);
 				}
 			}
 			function errorCallback(error){
@@ -20,48 +21,67 @@ app.controller("pesquisaSeriesCtrl", function ($scope, $http) {
 			}
 	}
 
-	$scope.adicionaSerieAoWatchlist = function(serie) {
+
+$scope.adicionaSerieAoWatchlist = function(serie) {
 		if($scope.contemSeriePerfil(serie)) {
-			alert("A série está no seu perfil!");
+			alert("A série já pertence ao seu perfil!");
 		}
 		
 		else if($scope.contemSerieWatchlist(serie)) {
-			alert("A Série já existe no seu Watchlist!");
+			alert("A série já pertence ao seu Watchlist!");
 		}
 		else {
 			$scope.seriesWatchlist.push(serie);
 		}
 	}
 
-	$scope.contemSerieWatchlist = function(serie) {
-		for (var i = 0; i < $scope.seriesWatchlist.length; i++) {
-			if($scope.seriesWatchlist[i].Title === serie.Title) {
-				return true;
-			}
+
+	$scope.adicionaSerieAoWatchlist = function(serie) {
+		if($scope.contemSerie($scope.seriesPerfil, serie)) {
+			alert("A série já pertence ao seu perfil!");
 		}
-		return false;
+		
+		else if($scope.contemSerie($scope.seriesWatchlist, serie)) {
+			alert("A série já pertence ao seu Watchlist!");
+		}
+		else {
+			$scope.seriesWatchlist.push(serie);
+			console.log(serie);
+		}
 	}
 
 	$scope.adicionaSerieAoPerfil = function(serie) {
-		if($scope.contemSeriePerfil(serie)) {
+		if($scope.contemSerie($scope.seriesPerfil, serie)) {
 			alert("A Série já existe no seu Perfil!");
 		}
 		else {
+			
+			if($scope.contemSerie($scope.seriesWatchlist, serie)) {
+				$scope.remove($scope.seriesWatchlist, serie);
+			}
 			$scope.seriesPerfil.push(serie);
 		}
-	}
+}
 
-	$scope.contemSeriePerfil = function(serie) {
-		for (var i = 0; i < $scope.seriesPerfil.length; i++) {
-			if($scope.seriesPerfil[i].Title === serie.Title) {
+	$scope.contemSerie = function(array, serie) {
+		for (var i = 0; i < array.length; i++) {
+			if(array[i].Title === serie.Title) {
 				return true;
 			}
 		}
 		return false;
 	}
+	
 
-
-	 
+	$scope.remove = function(array, serie) {
+		var i = array.indexOf(serie);
+		if(i !== -1) {
+			array.splice(i, 1);
+		}
+    	return array;
+	}
 
 
 }); 
+
+
