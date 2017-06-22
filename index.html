@@ -17,7 +17,7 @@
 
   <body ng-controller="pesquisaSeriesCtrl">
 
-    <div class="container">
+     <div class="container">
 
       <div class="masthead">
         <nav>
@@ -34,34 +34,34 @@
       <div class="jumbotron">
         <h1>{{app}}</h1>
         <input class="form-control" type="text" ng-model="nome"" placeholder="Nome da série">
-		<button class="btn btn-lg  btn-success" ng-click="procuraSerie(nome)"  ng-disabled="!nome">Pesquisar</button>
+    <button class="btn btn-lg  btn-success" ng-click="procuraSerie(nome)"  ng-disabled="!nome">Pesquisar</button>
       </div>
 
       <!-- Example row of columns -->
       <div class="row">
 
-      	 <div ng-repeat="serie in seriesPesquisadas" class="col-sm-6">
-	 		<h4>{{serie.Title}}</h4>
-	 		<img ng-src="{{serie.Poster}}" alt="...">
-	 		<button class="btn btn-default" ng-click="adicionaSerieAoWatchlist(serie)">Adicionar ao Watchlist</button>
-	 		<button class="btn btn-default" ng-click="adicionaSerieAoPerfil(serie)">Adicionar ao Perfil</button>
-	 	</div>	
+         <div ng-repeat="serie in seriesPesquisadas" class="col-sm-6">
+      <h4>{{serie.Title}}</h4>
+      <img ng-src="{{serie.Poster}}" alt="...">
+      <button class="btn btn-default" ng-click="adicionaSerieAoWatchlist(serie)">Adicionar ao Watchlist</button>
+      <button class="btn btn-default" ng-click="adicionaSerieAoPerfil(serie)">Adicionar ao Perfil</button>
+    </div>  
 
 
         <div class="col-lg-4">
           <h2>Séries do Meu Perfil</h2>
           <div ng-repeat="serie in seriesPerfil" class="col-sm-6">
-          		<h6>{{serie.Title}}</h6>
-	 			<img ng-src="{{serie.Poster}} " alt="...">
-	 		</div>
+              <h6>{{serie.Title}}</h6>
+        <img ng-src="{{serie.Poster}} " alt="...">
+      </div>
         </div>
 
         <div class="col-lg-4">
           <h2>Séries do Meu Watchlist</h2>
           <div ng-repeat="serie in seriesWatchlist" class="col-sm-6">
-          		<h6>{{serie.Title}}</h6>
-	 			<img ng-src="{{serie.Poster}} " alt="...">
-	 		</div>
+              <h6>{{serie.Title}}</h6>
+        <img ng-src="{{serie.Poster}} " alt="...">
+      </div>
        </div>
 
         <div class="col-lg-4">
@@ -75,10 +75,8 @@
       </footer>
 
     </div> <!-- /container -->
-
   </body>
 </html>
-
 
 
 
