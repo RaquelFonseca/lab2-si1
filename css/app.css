@@ -4,7 +4,7 @@
 	font-family: 'Roboto', sans-serif;
 	background-color: black;
 	opacity: 0.85;
-	color: green;
+	color: gray;
 }
 
 h1 {
@@ -18,19 +18,20 @@ h2 {
 }
 
 
-.row img {
-	width:89px;
-    height:132px;
+body img {
+	width:90px;
+    height:135px;
 }
 
 .col-sm-6 {
-    height:200px;
+    height:220px;
 
 }
 
-.col-lg-4 {
+#perfil, #watchlist{
 	text-align: center;
 }
+
 
 
 

@@ -1,6 +1,6 @@
-app.controller("pesquisaSeriesCtrl", function ($scope, $http) {
-	
-	$scope.app = "PESQUISAR SÉRIES";
+app.controller("minhasSeriesCtrl", function ($scope, $http) {
+
+	$scope.app = "MINHAS SÉRIES";
 	$scope.seriesPesquisadas = [];
 	$scope.seriesPerfil = [];
 	$scope.seriesWatchlist = [];
@@ -13,7 +13,6 @@ app.controller("pesquisaSeriesCtrl", function ($scope, $http) {
 				}
 				else {
 					$scope.seriesPesquisadas = response.data.Search;
-					console.log(response.data.Search);
 				}
 			}
 			function errorCallback(error){
@@ -21,24 +20,22 @@ app.controller("pesquisaSeriesCtrl", function ($scope, $http) {
 			}
 	}
 
-
-$scope.adicionaSerieAoWatchlist = function(serie) {
-		if($scope.contemSeriePerfil(serie)) {
-			alert("A série já pertence ao seu perfil!");
-		}
-		
-		else if($scope.contemSerieWatchlist(serie)) {
-			alert("A série já pertence ao seu Watchlist!");
+	$scope.adicionaSerieAoPerfil = function(serie) {
+		if($scope.contemSerie($scope.seriesPerfil, serie)) {
+			alert("A série já pertence ao seu Perfil!");
 		}
 		else {
-			$scope.seriesWatchlist.push(serie);
+			if($scope.contemSerie($scope.seriesWatchlist, serie)) {
+				$scope.removeSerie($scope.seriesWatchlist, serie);
+			}
+			$scope.seriesPerfil.push(serie);
 		}
 	}
 
 
 	$scope.adicionaSerieAoWatchlist = function(serie) {
 		if($scope.contemSerie($scope.seriesPerfil, serie)) {
-			alert("A série já pertence ao seu perfil!");
+			alert("A série já pertence ao seu Perfil!");
 		}
 		
 		else if($scope.contemSerie($scope.seriesWatchlist, serie)) {
@@ -50,19 +47,6 @@ $scope.adicionaSerieAoWatchlist = function(serie) {
 		}
 	}
 
-	$scope.adicionaSerieAoPerfil = function(serie) {
-		if($scope.contemSerie($scope.seriesPerfil, serie)) {
-			alert("A Série já existe no seu Perfil!");
-		}
-		else {
-			
-			if($scope.contemSerie($scope.seriesWatchlist, serie)) {
-				$scope.remove($scope.seriesWatchlist, serie);
-			}
-			$scope.seriesPerfil.push(serie);
-		}
-}
-
 	$scope.contemSerie = function(array, serie) {
 		for (var i = 0; i < array.length; i++) {
 			if(array[i].Title === serie.Title) {
@@ -72,8 +56,17 @@ $scope.adicionaSerieAoWatchlist = function(serie) {
 		return false;
 	}
 	
+	$scope.removeSeriePerfil = function(serie) {
+		var resposta = confirm("Deseja realmente remover a série " +serie.Title+ "?");
+		if (resposta==true) {
+  			$scope.removeSerie($scope.seriesPerfil, serie);
+  		}
+  	}
 
-	$scope.remove = function(array, serie) {
+
+	$scope.removeSerie = function(array, serie) {
+		if(array === $scope.seriesPerfil){
+		}
 		var i = array.indexOf(serie);
 		if(i !== -1) {
 			array.splice(i, 1);
@@ -81,6 +74,11 @@ $scope.adicionaSerieAoWatchlist = function(serie) {
     	return array;
 	}
 
+	$scope.reinicializaSeriesPesquisadas = function() {
+		$scope.seriesPesquisadas = [];
+	}
+
+	
 
 }); 
 
