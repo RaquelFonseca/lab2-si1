@@ -8,11 +8,13 @@
   <link rel="stylesheet" type="text/css" href="css/app.css">
 	<script src="lib/angular/angular.min.js"></script>
 	<script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/controllers/minhasSeriesCtrl.js"></script>
 </head>
 
 <body ng-controller="minhasSeriesCtrl">
+
   <div class="container"> 
 
     <div class="masthead">
@@ -24,7 +26,7 @@
           <li><a href="#">About</a></li>
         </ul>
       </nav>
-    </div>
+    </div> <!--masthead-->
 
     <div id="home"class="jumbotron">
       <h1>{{app}}</h1>
@@ -32,24 +34,48 @@
       <button class="btn btn-lg  btn-primary" ng-click="procuraSerie(nome)" ng-disabled="!nome">Pesquisar</button>
     </div>
 
-    <div  class="row">
-      <div ng-repeat="serie in seriesPesquisadas" class="col-sm-6">
-        <h4>{{serie.Title}}</h4>
-        <img ng-src="{{serie.Poster !== 'N/A' ? serie.Poster: 'img/foto.png'}}" alt="...">
-        <button class="btn btn-success" ng-click="adicionaSerieAoPerfil(serie)">Adicionar ao Perfil</button>
-        <button class="btn btn-success" ng-click="adicionaSerieAoWatchlist(serie)">Adicionar ao Watchlist</button>
-      </div>  
-    </div>
-
+    <div ng-repeat="serie in seriesPesquisadas" class="col-sm-6">
+      <h4>{{serie.Title}}</h4>
+      <img ng-src="{{serie.Poster !== 'N/A' ? serie.Poster: 'img/foto.png'}}" alt="...">
+      <button class="btn btn-success" ng-click="adicionaSerieAoPerfil(serie)">Adicionar ao Perfil</button>
+      <button class="btn btn-success" ng-click="adicionaSerieAoWatchlist(serie)">Adicionar ao Watchlist</button>
+    </div>  
+  
     <div id="perfil" ng-init="perfil = false" ng-show="perfil" class="col-sm-6">
       <h2>Séries do Meu Perfil</h2>
       <div ng-repeat="serie in seriesPerfil" class="col-sm-6">
         <button class="btn btn-danger" ng-click="removeSeriePerfil(serie)">Remover Série</button>
         <h6>{{serie.Title}}</h6>
-        <a href="#informacoesSerie"><img src="{{serie.Poster !== 'N/A' ? serie.Poster: 'img/foto.png'}}" title="serie.Title" alt="..."/></a>
-        <!--img ng-src="{{serie.Poster !== 'N/A' ? serie.Poster: 'img/foto.png'}} " alt="..."-->
+        <a href="#myModal{{$index}}" data-toggle="modal"><img src="{{serie.Poster !== 'N/A' ? serie.Poster: 'img/foto.png'}}" title="Informações" alt="..."/></a>
+
+
+        <div id="myModal{{$index}}" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{serie.Title}}</h4>
+              </div>
+
+              <div class="modal-body">
+                <img src="{{serie.Poster !== 'N/A' ? serie.Poster: 'img/foto.png'}}"  alt="..."/>
+                <h6>{{serie.Rated}}</h6>
+                <h6>{{serie.imdbRating}}</h6>
+                <p>khdslçjfaljfdaljfdalsjfaljfsaljfasljfdaljfaçljfalçjfaçljfaljfljfialjfdljfljfal</p>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+              </div>
+
+              </div>
+            </div>
+          </div> <!--myModa-->
+
       </div>
-    </div>
+    </div> <!--Séries do Meu Perfil-->
+
 
     <div id="watchlist" ng-init="watchlist = false" ng-show="watchlist" class="col-sm-6">
       <h2>Séries do Meu Watchlist</h2>
@@ -59,94 +85,12 @@
         <img ng-src="{{serie.Poster !== 'N/A' ? serie.Poster: 'img/foto.png'}} " alt="...">
       </div>
     </div>
-      
+
   </div> <!-- div container-->
-  
+
 </body>
+
 </html> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

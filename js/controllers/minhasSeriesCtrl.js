@@ -6,13 +6,14 @@ app.controller("minhasSeriesCtrl", function ($scope, $http) {
 	$scope.seriesWatchlist = [];
 
 	$scope.procuraSerie = function(nome) {
-		$http.get("http://www.omdbapi.com/?s=" + nome+ "&type=series&apikey=93330d3c").then(successCallback, errorCallback);
+		$http.get("http://www.omdbapi.com/?s=" + nome+ "&type=series&apikey=93330d3c&plot=full").then(successCallback, errorCallback);
 			function successCallback(response){
 				if (response.data.Response === 'False') {
     	    		alert("A série não foi encontrada!");
 				}
 				else {
 					$scope.seriesPesquisadas = response.data.Search;
+					console.log(response.data);
 				}
 			}
 			function errorCallback(error){
