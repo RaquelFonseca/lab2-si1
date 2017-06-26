@@ -32,6 +32,29 @@ body img {
 	text-align: center;
 }
 
+.modal-title {
+	color: blue;
+
+}
+
+.nota {
+ background-color: #FFFF00 ;
+ font-size: 18px;
+   border-radius: 50%;
+   font-weight: 200;
+   height: 80px;
+   line-height: 80px;
+   text-align: center;
+   width: 80px;
+ top: -40px;
+ right: 40px;
+}
+
+h5 {
+	color: #007fff;
+
+}
+
 
 
 

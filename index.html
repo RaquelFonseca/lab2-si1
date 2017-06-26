@@ -37,14 +37,14 @@
     <div ng-repeat="serie in seriesPesquisadas" class="col-sm-6">
       <h4>{{serie.Title}}</h4>
       <img ng-src="{{serie.Poster !== 'N/A' ? serie.Poster: 'img/foto.png'}}" alt="...">
-      <button class="btn btn-success" ng-click="adicionaSerieAoPerfil(serie)">Adicionar ao Perfil</button>
-      <button class="btn btn-success" ng-click="adicionaSerieAoWatchlist(serie)">Adicionar ao Watchlist</button>
+      <button class="btn btn-success" ng-click="adicionaSerieAoPerfil(serie)" >+ Adicionar ao Perfil</button>
+      <button class="btn btn-success" ng-click="adicionaSerieAoWatchlist(serie)">+ Adicionar ao Watchlist</button>
     </div>  
   
     <div id="perfil" ng-init="perfil = false" ng-show="perfil" class="col-sm-6">
       <h2>Séries do Meu Perfil</h2>
       <div ng-repeat="serie in seriesPerfil" class="col-sm-6">
-        <button class="btn btn-danger" ng-click="removeSeriePerfil(serie)">Remover Série</button>
+        <button class="btn btn-danger" ng-click="removeSeriePerfil(serie)">- Remover Série</button>
         <h6>{{serie.Title}}</h6>
         <a href="#myModal{{$index}}" data-toggle="modal"><img src="{{serie.Poster !== 'N/A' ? serie.Poster: 'img/foto.png'}}" title="Informações" alt="..."/></a>
 
@@ -59,10 +59,16 @@
               </div>
 
               <div class="modal-body">
-                <img src="{{serie.Poster !== 'N/A' ? serie.Poster: 'img/foto.png'}}"  alt="..."/>
-                <h6>{{serie.Rated}}</h6>
-                <h6>{{serie.imdbRating}}</h6>
-                <p>khdslçjfaljfdaljfdalsjfaljfsaljfasljfdaljfaçljfalçjfaçljfaljfljfialjfdljfljfal</p>
+                <p class="nota">Nota {{serie.minhaNota}}</p> 
+                <img src="{{serie.Poster !== 'N/A' ? serie.Poster: 'img/foto.png'}}"  style="width:160px; height:200px; " alt="..."/>
+                <h5>Classificação etária {{serie.Rated}}</h5>
+                <h5>média do IMDb {{serie.imdbRating}}</h5>
+                <h6>{{serie.Plot}}</h6>
+                <input ng-model="nota" type="text" placeholder="Inclua sua nota na série">
+                <button type="submit" style="background-color: blue; color:white" ng-disabled="!nota" ng-click="incluiNotaSerie(serie,nota)">Enviar</button>
+                <input ng-model="registro" type="text" placeholder="Registrar o último capítulo/episódio que você assistiu">
+                <button type="submit" style="background-color: blue; color:white" ng-disabled="!registro" ng-click="registraSerie(serie,registro)">Registrar</button>
+                <p>Último capítulo/episódio assistido {{serie.meuRegistro}}</p> 
               </div>
 
               <div class="modal-footer">
@@ -80,7 +86,7 @@
     <div id="watchlist" ng-init="watchlist = false" ng-show="watchlist" class="col-sm-6">
       <h2>Séries do Meu Watchlist</h2>
       <div ng-repeat="serie in seriesWatchlist" class="col-sm-6">
-        <button class="btn btn-success" ng-click="adicionaSerieAoPerfil(serie)">Adicionar ao Perfil</button>
+        <button class="btn btn-success" ng-click="adicionaSerieAoPerfil(serie)">+ Adicionar ao Perfil</button>
         <h6>{{serie.Title}}</h6>
         <img ng-src="{{serie.Poster !== 'N/A' ? serie.Poster: 'img/foto.png'}} " alt="...">
       </div>

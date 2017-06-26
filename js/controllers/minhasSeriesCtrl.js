@@ -6,14 +6,13 @@ app.controller("minhasSeriesCtrl", function ($scope, $http) {
 	$scope.seriesWatchlist = [];
 
 	$scope.procuraSerie = function(nome) {
-		$http.get("http://www.omdbapi.com/?s=" + nome+ "&type=series&apikey=93330d3c&plot=full").then(successCallback, errorCallback);
+		$http.get("http://www.omdbapi.com/?s=" + nome+ "&type=series&apikey=93330d3c").then(successCallback, errorCallback);
 			function successCallback(response){
 				if (response.data.Response === 'False') {
     	    		alert("A série não foi encontrada!");
 				}
 				else {
 					$scope.seriesPesquisadas = response.data.Search;
-					console.log(response.data);
 				}
 			}
 			function errorCallback(error){
@@ -29,10 +28,14 @@ app.controller("minhasSeriesCtrl", function ($scope, $http) {
 			if($scope.contemSerie($scope.seriesWatchlist, serie)) {
 				$scope.removeSerie($scope.seriesWatchlist, serie);
 			}
-			$scope.seriesPerfil.push(serie);
+			$http.get('https://www.omdbapi.com/?i=' + serie.imdbID+ '&plot=full&apikey=93330d3c').then(function(response){
+				$scope.seriesPerfil.push(response.data);
+			}).catch(function(erro) {
+				console.log(erro);
+			});
+
 		}
 	}
-
 
 	$scope.adicionaSerieAoWatchlist = function(serie) {
 		if($scope.contemSerie($scope.seriesPerfil, serie)) {
@@ -64,7 +67,6 @@ app.controller("minhasSeriesCtrl", function ($scope, $http) {
   		}
   	}
 
-
 	$scope.removeSerie = function(array, serie) {
 		if(array === $scope.seriesPerfil){
 		}
@@ -77,6 +79,14 @@ app.controller("minhasSeriesCtrl", function ($scope, $http) {
 
 	$scope.reinicializaSeriesPesquisadas = function() {
 		$scope.seriesPesquisadas = [];
+	}
+
+	$scope.incluiNotaSerie = function(serie, nota) {
+		serie.minhaNota = nota;
+	}
+
+	$scope.registraSerie = function(serie, registro) {
+		serie.meuRegistro = registro;
 	}
 
 	
