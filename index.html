@@ -67,11 +67,11 @@
                 <h6>{{serie.Plot}}</h6>
                 <div class=" form-group">
                   <input ng-model="nota" type="text" placeholder="Inclua sua nota na série">
-                  <button type="submit" class="btn btn-lg  btn-primary" ng-disabled="!nota" ng-click="incluiNotaSerie(serie,nota)">Enviar</button>
+                  <button type="submit"   class="btn btn-lg  btn-primary"   ng-disabled="!nota" ng-click="incluiNotaSerie(serie,nota)">Enviar</button> 
                 </div>
-                <div  class=" form-group">
-                  <input ng-model="registro" type="text" placeholder="Último capítulo/episódio assistido">
-                  <button type="submit" class="btn btn-lg  btn-primary" ng-disabled="!registro" ng-click="registraSerie(serie,registro)">Registrar</button>
+                <div class=" form-group">
+                  <input ng-model="registro" type="text" style="width:220px" placeholder="Último capítulo/episódio assistido">
+                  <button type="submit" class="btn btn-lg  btn-primary" ng-disabled="!registro" ng-click="registraSerie(serie,registro)">Registrar</button> 
                 </div>
 
               <div class="modal-footer">
