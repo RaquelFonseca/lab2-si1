@@ -18,15 +18,14 @@
   <div class="container"> 
 
     <div class="masthead">
-      <nav>
+      <div class="navbar navbar-inverse navbar-fixed-top headroom" >
         <ul class="nav nav-justified">
           <li><a href="#home" ng-click="reinicializaSeriesPesquisadas()">Home</a></li>
           <li><a href="#perfil" ng-click="perfil = !perfil">Séries do Meu Perfil</a></li>
           <li><a href="#watchlist" ng-click="watchlist = !watchlist">Séries do Meu Watchlist</a></li>
-          <li><a href="#">About</a></li>
         </ul>
       </nav>
-    </div> <!--masthead-->
+    </div> 
 
     <div id="home"class="jumbotron">
       <h1>{{app}}</h1>
@@ -59,17 +58,21 @@
               </div>
 
               <div class="modal-body">
-                <p class="nota">Nota {{serie.minhaNota}}</p> 
+
+                <p class="nota">Nota: {{serie.minhaNota}}</p> <p class="registro">Último capítulo/episódio assistido: {{serie.meuRegistro}}</p> 
+
                 <img src="{{serie.Poster !== 'N/A' ? serie.Poster: 'img/foto.png'}}"  style="width:160px; height:200px; " alt="..."/>
                 <h5>Classificação etária {{serie.Rated}}</h5>
                 <h5>média do IMDb {{serie.imdbRating}}</h5>
                 <h6>{{serie.Plot}}</h6>
-                <input ng-model="nota" type="text" placeholder="Inclua sua nota na série">
-                <button type="submit" style="background-color: blue; color:white" ng-disabled="!nota" ng-click="incluiNotaSerie(serie,nota)">Enviar</button>
-                <input ng-model="registro" type="text" placeholder="Registrar o último capítulo/episódio que você assistiu">
-                <button type="submit" style="background-color: blue; color:white" ng-disabled="!registro" ng-click="registraSerie(serie,registro)">Registrar</button>
-                <p>Último capítulo/episódio assistido {{serie.meuRegistro}}</p> 
-              </div>
+                <div class=" form-group">
+                  <input ng-model="nota" type="text" placeholder="Inclua sua nota na série">
+                  <button type="submit" class="btn btn-lg  btn-primary" ng-disabled="!nota" ng-click="incluiNotaSerie(serie,nota)">Enviar</button>
+                </div>
+                <div  class=" form-group">
+                  <input ng-model="registro" type="text" placeholder="Último capítulo/episódio assistido">
+                  <button type="submit" class="btn btn-lg  btn-primary" ng-disabled="!registro" ng-click="registraSerie(serie,registro)">Registrar</button>
+                </div>
 
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
@@ -77,10 +80,10 @@
 
               </div>
             </div>
-          </div> <!--myModa-->
+          </div> 
 
       </div>
-    </div> <!--Séries do Meu Perfil-->
+    </div> 
 
 
     <div id="watchlist" ng-init="watchlist = false" ng-show="watchlist" class="col-sm-6">
@@ -92,11 +95,8 @@
       </div>
     </div>
 
-  </div> <!-- div container-->
+  </div> 
 
 </body>
 
 </html> 
-
-
-
