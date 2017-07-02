@@ -1,9 +1,11 @@
 
+
+
 .jumbotron {
 	text-align: center;
 	font-family: 'Roboto', sans-serif;
 	background-color: black;
-	opacity: 0.85;
+	opacity: 0.8;
 	color: gray;
 }
 
@@ -19,16 +21,14 @@ h2 {
 
 
 body img {
-	width:90px;
-    height:135px;
-}
-
-.col-sm-6 {
-    height:220px;
+	width:230px;
+    height:430px;
 
 }
 
-#perfil, #watchlist{
+
+
+.col-sm-6, #perfil, #watchlist{
 	text-align: center;
 }
 
@@ -69,6 +69,17 @@ h5 {
 	color: #007fff;
 
 }
+
+#foot {
+	height: 100px;
+	color: #000;
+}
+
+.modal {
+	color: black;
+}
+
+
 
 
 
