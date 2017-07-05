@@ -13,7 +13,7 @@
   <script src="js/controllers/minhasSeriesCtrl.js"></script>
   <style type="text/css">
     body {
-            background-image: url("img/fundo1.jpg");
+            background-image: url("img/fundo.jpg");
     background-attachment: fixed;
             color: white;
     }
@@ -53,11 +53,8 @@
     <div ng-repeat="serie in seriesPesquisadas" class="col-sm-6">
       <h4>{{serie.Title}}</h4>
       <img ng-src="{{serie.Poster !== 'N/A' ? serie.Poster: 'img/semImagem.png'}}" alt="...">
-      <p></p>
       <button class="btn btn-success" ng-click="adicionaSerieAoPerfil(serie)" >+ Adicionar ao Perfil</button>
-      <p></p>
       <button class="btn btn-success" ng-click="adicionaSerieAoWatchlist(serie)">+ Adicionar ao Watchlist</button>
-      <p></p>
     </div>  
   
     <div id="perfil" ng-init="perfil = false" ng-show="perfil" class="col-sm-6">
