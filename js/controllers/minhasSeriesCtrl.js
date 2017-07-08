@@ -53,7 +53,7 @@ app.controller("minhasSeriesCtrl", function ($scope, $http) {
 
 	$scope.contemSerie = function(array, serie) {
 		for (var i = 0; i < array.length; i++) {
-			if(array[i].Title === serie.Title) {
+			if(array[i].imdbID === serie.imdbID) {
 				return true;
 			}
 		}
